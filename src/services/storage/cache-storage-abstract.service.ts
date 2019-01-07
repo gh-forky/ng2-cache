@@ -5,6 +5,10 @@ import {StorageValueInterface} from '../../interfaces/storage-value.interface';
  * Abstract cache storage
  */
 export abstract class CacheStorageAbstract {
+    /**
+     * The number of data items stored in the storage
+     */
+    public abstract readonly length: number;
 
     /**
      * Get item from storage
@@ -39,5 +43,11 @@ export abstract class CacheStorageAbstract {
      * Check if storage is enabled
      */
     public abstract isEnabled(): boolean;
+
+    /**
+     * Get the name of the nth key in the storage
+     * @param index
+     */
+    public abstract key(index: number): string | null;
 
 }

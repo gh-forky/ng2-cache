@@ -8,6 +8,9 @@ import {StorageValueInterface} from '../../../interfaces/storage-value.interface
  */
 @Injectable()
 export class CacheSessionStorage extends CacheStorageAbstract {
+    public get length(): number {
+        return sessionStorage ? sessionStorage.length : 0 ;
+    }
 
     public getItem(key: string) {
         let value = sessionStorage.getItem(key);
@@ -43,5 +46,9 @@ export class CacheSessionStorage extends CacheStorageAbstract {
         } catch (e) {
             return false;
         }
+    }
+
+    public key(index: number): string | null {
+        return sessionStorage.key(index);
     }
 }

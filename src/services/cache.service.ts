@@ -14,6 +14,12 @@ const DEFAULT_ENABLED_STORAGE = CacheStoragesEnum.MEMORY;
 
 @Injectable()
 export class CacheService {
+    /**
+     * The number of data items stored in the storage
+     */
+    public get length(): number {
+        return this._storage ? this._storage.length : 0 ;
+    }
 
     /**
      * Default cache options
@@ -145,6 +151,14 @@ export class CacheService {
      */
     public setGlobalPrefix(prefix: string) {
         this._prefix = prefix;
+    }
+
+    /**
+     * Get the name of the nth key in the storage
+     * @param index
+     */
+    public key(index: number): string | null {
+        return this._storage.key(index);
     }
 
     /**

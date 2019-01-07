@@ -8,6 +8,9 @@ import {StorageValueInterface} from '../../../interfaces/storage-value.interface
  */
 @Injectable()
 export class CacheLocalStorage extends CacheStorageAbstract {
+    public get length(): number {
+        return localStorage ? localStorage.length : 0 ;
+    }
 
     public getItem(key: string) {
         const value = localStorage.getItem(key);
@@ -43,5 +46,9 @@ export class CacheLocalStorage extends CacheStorageAbstract {
         } catch (e) {
             return false;
         }
+    }
+
+    public key(index: number): string | null {
+        return localStorage.key(index);
     }
 }

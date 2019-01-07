@@ -11,6 +11,10 @@ export class CacheMemoryStorage extends CacheStorageAbstract {
 
     private _data: {[key: string]: any} = {};
 
+    public get length(): number {
+        return (this._data && Object.keys(this._data)) ? Object.keys(this._data).length : 0 ;
+    }
+
     public getItem(key: string) {
         return this._data[key] ? this._data[key] : null;
     }
@@ -34,5 +38,9 @@ export class CacheMemoryStorage extends CacheStorageAbstract {
 
     public isEnabled() {
         return true;
+    }
+
+    public key(index: number): string | null {
+        return (this._data && Object.keys(this._data)) ? Object.keys(this._data)[index] : null;
     }
 }
